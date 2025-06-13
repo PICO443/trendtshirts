@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:trendtshirts/HomeScreen/components/CategoriesSections.dart';
 import 'package:trendtshirts/HomeScreen/components/HomeAppBar.dart';
 import 'package:trendtshirts/HomeScreen/components/HomeSearchBar.dart';
 
@@ -27,7 +28,8 @@ class HomeScreenBody extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          HomeSearchBar()
+          HomeSearchBar(),
+          CategoriesSection()
         ],
       ),
     );
