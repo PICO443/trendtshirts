@@ -11,7 +11,9 @@ class CartPageAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       backgroundColor: Color(0xFF2962FF),
       elevation: 1,
-      leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back_ios), color: Theme.of(context).colorScheme.onPrimary,),
+      leading: IconButton(onPressed: (){
+        Navigator.pop(context);
+      }, icon: Icon(Icons.arrow_back_ios), color: Theme.of(context).colorScheme.onPrimary,),
     );
   }
 

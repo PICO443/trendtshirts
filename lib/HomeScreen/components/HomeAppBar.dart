@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trendtshirts/CartPage/CartPage.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
@@ -11,7 +12,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
       title: AppBarTitle(),
       actions: [
-        IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart), color: theme.colorScheme.onPrimary,)
+        IconButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage()));
+        }, icon: Icon(Icons.shopping_cart), color: theme.colorScheme.onPrimary,)
       ],
       backgroundColor: Color(0xFF2962FF),
       centerTitle: true,

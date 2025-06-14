@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trendtshirts/CartPage/CartPage.dart';
 import 'package:trendtshirts/HomeScreen/HomeScreen.dart';
 
 void main() {
@@ -16,7 +15,7 @@ class TrendTShirtsApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF2962FF)),
       ),
-      home: const CartPage(),
+      home: const HomeScreen(),
     );
   }
 }
