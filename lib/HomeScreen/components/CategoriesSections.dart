@@ -5,19 +5,28 @@ class CategoriesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 4,
-      runSpacing: 8,
-      children: [
-        Chip(label: Text("Category 1")),
-        Chip(label: Text("Category 1")),
-        Chip(label: Text("Category 1")),
-        Chip(label: Text("Category 1")),
-        Chip(label: Text("Category 1")),
-        Chip(label: Text("Category 1")),
-      ],
+    return  SizedBox(
+      height: 40,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+          itemCount: 8,
+            itemBuilder: (context, index){
+          return FilterChip(label: Text("Category"), onSelected: (_){});
+        }, separatorBuilder: (BuildContext context, int index) { return SizedBox(width: 8); },
+      ),
     );
 
+    // return Row(
+    //     spacing: 4,
+    //     children: [
+    //       FilterChip(label: Text("Category"), onSelected: (_){}),
+    //       FilterChip(label: Text("Category"), onSelected: (_){}),
+    //       FilterChip(label: Text("Category"), onSelected: (_){}),
+    //       FilterChip(label: Text("Category"), onSelected: (_){}),
+    //       FilterChip(label: Text("Category"), onSelected: (_){}),
+    //       FilterChip(label: Text("Category"), onSelected: (_){}),
+    //     ],
+    // );
   }
 
 }

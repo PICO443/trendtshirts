@@ -26,15 +26,25 @@ class HomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child:
-      Column(
-        children: [
-          HomeSearchBar(),
-          CategoriesSection(),
-          ItemCard()
-        ],
-      )
-    );
+      padding: const EdgeInsets.fromLTRB(8, 32, 8, 8),
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          spacing: 16,
+          children: [
+            HomeSearchBar(),
+            CategoriesSection(),
+            Expanded(
+              child: ListView.separated(
+                shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                return ItemCard();
+              }, separatorBuilder: (context, index) {
+                return SizedBox(height: 8);
+              }, itemCount: 4),
+            )
+          ],
+        )
+      );
   }
 }

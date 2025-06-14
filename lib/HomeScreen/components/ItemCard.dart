@@ -7,7 +7,6 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Card(
-      margin: EdgeInsets.all(16),
       color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
