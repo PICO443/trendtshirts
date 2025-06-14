@@ -5,8 +5,9 @@ class CategoriesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Wrap(
       spacing: 4,
+      runSpacing: 8,
       children: [
         Chip(label: Text("Category 1")),
         Chip(label: Text("Category 1")),

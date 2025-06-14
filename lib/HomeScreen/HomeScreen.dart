@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trendtshirts/HomeScreen/components/CategoriesSections.dart';
 import 'package:trendtshirts/HomeScreen/components/HomeAppBar.dart';
 import 'package:trendtshirts/HomeScreen/components/HomeSearchBar.dart';
+import 'package:trendtshirts/HomeScreen/components/ItemCard.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,12 +27,14 @@ class HomeScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
+      child:
+      Column(
         children: [
           HomeSearchBar(),
-          CategoriesSection()
+          CategoriesSection(),
+          ItemCard()
         ],
-      ),
+      )
     );
   }
 }
