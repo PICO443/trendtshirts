@@ -1,16 +1,9 @@
 # trendtshirts
 
 E-commerce app - Flutter course assignment
+Screenshots:
+1- Home Screen
+![image](https://github.com/user-attachments/assets/6ad08b52-f0da-456e-837f-051d6999caa3)
+2- Cart Screen
+![image](https://github.com/user-attachments/assets/c87c8283-74cb-447d-82a4-da827ba6e817)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
