@@ -1,8 +1,16 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../Domain/Item.dart';
+
 class CheckOutCard extends StatelessWidget {
-  const CheckOutCard({super.key});
+  final List<Item> items;
+
+  const CheckOutCard({super.key, required this.items});
+
+  double _calculateTotalPrice(List<Item> items){
+    return items.fold(0, (value, item) => value + item.price);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +20,13 @@ class CheckOutCard extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            CheckoutTotalPrice(),
+            CheckoutTotalPrice(totalPrice: _calculateTotalPrice(items),),
             SizedBox(height: 16),
             Column(
               spacing: 8,
               children: [
-                CheckoutInfo(label: "Items Price"),
-                CheckoutInfo(label: "Delivery Cost"),
+                CheckoutInfo(label: "Items Price", amount: _calculateTotalPrice(items)),
+                CheckoutInfo(label: "Delivery Cost", amount: 2000),
               ],
             ),
             SizedBox(height: 16),
@@ -30,6 +38,8 @@ class CheckOutCard extends StatelessWidget {
   }
 
 }
+
+
 
 class CheckoutActionButton extends StatelessWidget {
   const CheckoutActionButton({
@@ -58,10 +68,11 @@ class CheckoutActionButton extends StatelessWidget {
 
 class CheckoutInfo extends StatelessWidget {
   final String label;
+  final double amount;
 
   const CheckoutInfo({
     required this.label,
-    super.key,
+    super.key, required this.amount,
   });
 
   @override
@@ -71,15 +82,17 @@ class CheckoutInfo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text("$label:",  style: theme.typography.englishLike.bodyLarge?.copyWith(color: Colors.black.withAlpha(100))),
-        Text("\$2,000", style: theme.typography.englishLike.bodyLarge?.copyWith(color: Colors.black.withAlpha(100))),
+        Text("\$$amount", style: theme.typography.englishLike.bodyLarge?.copyWith(color: Colors.black.withAlpha(100))),
       ],
     );
   }
 }
 
 class CheckoutTotalPrice extends StatelessWidget {
+  final double totalPrice;
+
   const CheckoutTotalPrice({
-    super.key,
+    super.key, required this.totalPrice,
   });
 
   @override
@@ -89,7 +102,7 @@ class CheckoutTotalPrice extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text("Total Price:", style: theme.typography.englishLike.titleLarge?.copyWith(color: Colors.black),),
-        Text("\$2,000",  style: theme.typography.englishLike.titleLarge?.copyWith(color: Colors.black)),
+        Text("\$$totalPrice",  style: theme.typography.englishLike.titleLarge?.copyWith(color: Colors.black)),
       ],
     );
   }

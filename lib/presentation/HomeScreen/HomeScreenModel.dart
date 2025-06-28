@@ -2,22 +2,8 @@ import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';
 
-class Category {
-  final String name;
-  final int id;
-  Category(this.name, this.id);
-}
-
-class Item {
-  final String name;
-  final String description;
-  final double price;
-  final String photoUrl;
-  final Category category;
-
-  Item(this.name, this.description, this.price, this.photoUrl,this.category);
-
-}
+import '../../Domain/Category.dart';
+import '../../Domain/Item.dart';
 
 class HomeScreenModel extends ChangeNotifier {
   HomeScreenModel(){

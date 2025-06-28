@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../HomeScreenModel.dart';
+import '../../../Domain/Item.dart';
 
 class ItemCard extends StatelessWidget {
   final Item item;

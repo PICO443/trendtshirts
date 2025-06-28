@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trendtshirts/HomeScreen/HomeScreen.dart';
+import 'package:trendtshirts/presentation/HomeScreen/HomeScreen.dart';
 
 void main() {
   runApp(const TrendTShirtsApp());

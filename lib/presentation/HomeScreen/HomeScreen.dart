@@ -1,11 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:trendtshirts/HomeScreen/HomeScreenModel.dart';
-import 'package:trendtshirts/HomeScreen/components/CategoriesSections.dart';
-import 'package:trendtshirts/HomeScreen/components/HomeAppBar.dart';
-import 'package:trendtshirts/HomeScreen/components/HomeSearchBar.dart';
-import 'package:trendtshirts/HomeScreen/components/ItemCard.dart';
+
+import 'HomeScreenModel.dart';
+import 'components/CategoriesSections.dart';
+import 'components/HomeAppBar.dart';
+import 'components/HomeSearchBar.dart';
+import 'components/ItemCard.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

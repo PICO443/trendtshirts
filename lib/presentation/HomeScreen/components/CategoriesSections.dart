@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trendtshirts/HomeScreen/HomeScreenModel.dart';
+
+import '../../../Domain/Category.dart';
+
 
 class CategoriesSection extends StatelessWidget {
   final List<Category> categoriesList;
@@ -19,18 +21,6 @@ class CategoriesSection extends StatelessWidget {
         }, separatorBuilder: (BuildContext context, int index) { return SizedBox(width: 8); },
       ),
     );
-
-    // return Row(
-    //     spacing: 4,
-    //     children: [
-    //       FilterChip(label: Text("Category"), onSelected: (_){}),
-    //       FilterChip(label: Text("Category"), onSelected: (_){}),
-    //       FilterChip(label: Text("Category"), onSelected: (_){}),
-    //       FilterChip(label: Text("Category"), onSelected: (_){}),
-    //       FilterChip(label: Text("Category"), onSelected: (_){}),
-    //       FilterChip(label: Text("Category"), onSelected: (_){}),
-    //     ],
-    // );
   }
 
 }
