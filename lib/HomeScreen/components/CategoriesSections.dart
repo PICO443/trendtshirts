@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:trendtshirts/HomeScreen/HomeScreenModel.dart';
 
 class CategoriesSection extends StatelessWidget {
-  const CategoriesSection({super.key});
+  final List<Category> categoriesList;
+  final int selectedCategory;
+  final Function(int) onSelected;
+  const CategoriesSection({required this.categoriesList,super.key, required this.selectedCategory, required this.onSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -9,9 +13,9 @@ class CategoriesSection extends StatelessWidget {
       height: 40,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-          itemCount: 8,
+          itemCount: categoriesList.length,
             itemBuilder: (context, index){
-          return FilterChip(label: Text("Category"), onSelected: (_){});
+          return FilterChip(label: Text(categoriesList[index].name), onSelected: (selected) => {onSelected(categoriesList[index].id)}, selected: categoriesList[index].id == selectedCategory,);
         }, separatorBuilder: (BuildContext context, int index) { return SizedBox(width: 8); },
       ),
     );

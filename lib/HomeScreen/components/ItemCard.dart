@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../HomeScreenModel.dart';
+
 class ItemCard extends StatelessWidget {
-  const ItemCard({super.key});
+  final Item item;
+  const ItemCard({required this.item,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +17,8 @@ class ItemCard extends StatelessWidget {
           spacing: 16,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CardMedia(),
-            CardContent(theme: theme),
+            CardMedia(photoUrl: (item.photoUrl.isEmpty)? "assets/images/placeholder.png": item.photoUrl),
+            CardContent(theme: theme, item: item,),
           ],
         ),
       ),
@@ -24,7 +27,10 @@ class ItemCard extends StatelessWidget {
 }
 
 class CardContent extends StatelessWidget {
+  final Item item;
+
   const CardContent({
+    required this.item,
     super.key,
     required this.theme,
   });
@@ -38,16 +44,16 @@ class CardContent extends StatelessWidget {
         spacing: 4,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Custom Designed", style: theme.typography.englishLike.titleLarge?.copyWith(color: Colors.black)),
-          Text("Item Category", style: TextStyle(color: Colors.grey)),
+          Text(item.name, style: theme.typography.englishLike.titleLarge?.copyWith(color: Colors.black)),
+          Text(item.category.name, style: TextStyle(color: Colors.grey)),
           SizedBox(height: 4),
           Text(
-            "Lorem ipsum dolor sit amet consectetur. Viverra porta aliquet dolor luctus adipiscing mauris aliquam molestie.",
+            item.description,
             maxLines: 4,
             overflow: TextOverflow.ellipsis,
             softWrap: true,
           ),
-          CardActions(theme: theme)
+          CardActions(itemPrice: item.price,theme: theme)
         ],
       ),
     );
@@ -55,7 +61,10 @@ class CardContent extends StatelessWidget {
 }
 
 class CardActions extends StatelessWidget {
+  final double itemPrice;
+
   const CardActions({
+    required this.itemPrice,
     super.key,
     required this.theme,
   });
@@ -68,7 +77,7 @@ class CardActions extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       spacing: 16,
       children: [
-        Text("2.00", style: theme.typography.englishLike.titleMedium?.copyWith(color: Colors.black)),
+        Text("$itemPrice", style: theme.typography.englishLike.titleMedium?.copyWith(color: Colors.black)),
         FilledButton.tonal(
           style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all(Color(0xFFF1C0E8)),
@@ -90,7 +99,9 @@ class CardActions extends StatelessWidget {
 }
 
 class CardMedia extends StatelessWidget {
+  final String photoUrl;
   const CardMedia({
+    required this.photoUrl,
     super.key,
   });
 
@@ -99,7 +110,7 @@ class CardMedia extends StatelessWidget {
     return SizedBox(
       height: 150,
       width: 150,
-      child: Image.asset("assets/images/placeholder.png", fit: BoxFit.cover),
+      child: Image.asset(photoUrl, fit: BoxFit.cover),
     );
   }
 }

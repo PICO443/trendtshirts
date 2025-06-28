@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HomeSearchBar extends StatelessWidget{
-  const HomeSearchBar({super.key});
+  final Function(String) onSearchKeywordChange;
+  const HomeSearchBar({ super.key, required this.onSearchKeywordChange});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,9 @@ class HomeSearchBar extends StatelessWidget{
             elevation: WidgetStateProperty.all(0),
             leading: Icon(Icons.search),
             hintText: "Search for an item",
+            onChanged: (text){
+              onSearchKeywordChange(text);
+            },
           ),
         ),
         SizedBox(
