@@ -4,7 +4,9 @@ import '../../../Domain/Item.dart';
 
 class ItemCard extends StatelessWidget {
   final Item item;
-  const ItemCard({required this.item,super.key});
+  final Function(Item) onAddToCartClick;
+
+  const ItemCard({required this.item,super.key, required this.onAddToCartClick});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class ItemCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CardMedia(photoUrl: (item.photoUrl.isEmpty)? "assets/images/placeholder.png": item.photoUrl),
-            CardContent(theme: theme, item: item,),
+            CardContent(theme: theme, item: item, onAddToCartClick: onAddToCartClick,),
           ],
         ),
       ),
@@ -28,11 +30,12 @@ class ItemCard extends StatelessWidget {
 
 class CardContent extends StatelessWidget {
   final Item item;
+  final Function(Item) onAddToCartClick;
 
   const CardContent({
     required this.item,
     super.key,
-    required this.theme,
+    required this.theme, required this.onAddToCartClick,
   });
 
   final ThemeData theme;
@@ -53,7 +56,7 @@ class CardContent extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             softWrap: true,
           ),
-          CardActions(itemPrice: item.price,theme: theme)
+          CardActions(item: item,theme: theme, onAddToCartClick: onAddToCartClick,)
         ],
       ),
     );
@@ -61,12 +64,12 @@ class CardContent extends StatelessWidget {
 }
 
 class CardActions extends StatelessWidget {
-  final double itemPrice;
+  final Item item;
+  final Function(Item) onAddToCartClick;
 
   const CardActions({
-    required this.itemPrice,
     super.key,
-    required this.theme,
+    required this.theme, required this.onAddToCartClick, required this.item,
   });
 
   final ThemeData theme;
@@ -77,13 +80,14 @@ class CardActions extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       spacing: 16,
       children: [
-        Text("$itemPrice", style: theme.typography.englishLike.titleMedium?.copyWith(color: Colors.black)),
+        Text("${item.price}", style: theme.typography.englishLike.titleMedium?.copyWith(color: Colors.black)),
         FilledButton.tonal(
           style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all(Color(0xFFF1C0E8)),
             minimumSize: WidgetStateProperty.all(Size(200, 50))
           ),
             onPressed: (){
+            onAddToCartClick(item);
             },
             child: Row(
               spacing: 8,

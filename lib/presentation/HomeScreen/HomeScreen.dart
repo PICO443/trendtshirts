@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:trendtshirts/presentation/CartScreen/CartScreenModel.dart';
 
 import 'HomeScreenModel.dart';
 import 'components/CategoriesSections.dart';
@@ -17,7 +18,8 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Color(0xFFF5F5F5),
       appBar: HomeAppBar(),
       body: MultiProvider(providers: [
-        ChangeNotifierProvider(create: (context) => HomeScreenModel())
+        ChangeNotifierProvider(create: (context) => HomeScreenModel()),
+        ChangeNotifierProvider(create: (context) => CartScreenModel())
       ],
         child: const HomeScreenBody(),
       ),
@@ -43,15 +45,17 @@ class HomeScreenBody extends StatelessWidget {
           children: [
             HomeSearchBar(onSearchKeywordChange: (searchKeyword) => homeModel.searchKeywordChanged(searchKeyword)),
             CategoriesSection(categoriesList: homeModel.categories, selectedCategory: homeModel.currentSelectedCategory, onSelected: (category) => homeModel.onCategorySelected(category),),
-            Expanded(
-              child: ListView.separated(
-                shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                return ItemCard(item: homeModel.items[index]);
-              }, separatorBuilder: (context, index) {
-                return SizedBox(height: 8);
-              }, itemCount: homeModel.items.length),
-            )
+            Consumer<CartScreenModel>(builder: (context, cartModel, child){
+              return Expanded(
+                child: ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return ItemCard(item: homeModel.items[index], onAddToCartClick: (item) { cartModel.addToCart(item); },);
+                    }, separatorBuilder: (context, index) {
+                  return SizedBox(height: 8);
+                }, itemCount: homeModel.items.length),
+              );
+            },),
           ],
         );
       }
