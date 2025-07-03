@@ -59,13 +59,15 @@ class HomeScreenModel extends ChangeNotifier {
     return _filterItemsByKeyword(keyword, _filterItemsByCategory(categoryId, items));
 }
 
-  List<Item> _filterItemsByKeyword(String keyword, List<Item> itemsList){
-    return _filteredItems = itemsList.takeWhile((item) => item.name.contains(keyword)).toList();
+  List<Item> _filterItemsByKeyword(String keyword, List<Item> itemsList) {
+    return itemsList
+        .where((item) => item.name.toLowerCase().contains(keyword.toLowerCase()))
+        .toList();
   }
 
-  List<Item> _filterItemsByCategory(int categoryId, List<Item> itemsList){
-    if(categoryId == 0) return itemsList;
-    return itemsList.takeWhile((item) => item.category.id == categoryId).toList();
+  List<Item> _filterItemsByCategory(int categoryId, List<Item> itemsList) {
+    if (categoryId == 0) return itemsList;
+    return itemsList.where((item) => item.category.id == categoryId).toList();
   }
 
 }

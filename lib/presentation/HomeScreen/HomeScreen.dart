@@ -17,12 +17,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFF5F5F5),
       appBar: HomeAppBar(),
-      body: MultiProvider(providers: [
-        ChangeNotifierProvider(create: (context) => HomeScreenModel()),
-        ChangeNotifierProvider(create: (context) => CartScreenModel())
-      ],
-        child: const HomeScreenBody(),
-      ),
+      body: const HomeScreenBody(),
     );
   }
 }

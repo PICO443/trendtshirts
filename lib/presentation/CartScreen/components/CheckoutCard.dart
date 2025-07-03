@@ -14,19 +14,20 @@ class CheckOutCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double deliveryCost = 2000;
     return Card(
       color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            CheckoutTotalPrice(totalPrice: _calculateTotalPrice(items),),
+            CheckoutTotalPrice(totalPrice: _calculateTotalPrice(items) + deliveryCost,),
             SizedBox(height: 16),
             Column(
               spacing: 8,
               children: [
                 CheckoutInfo(label: "Items Price", amount: _calculateTotalPrice(items)),
-                CheckoutInfo(label: "Delivery Cost", amount: 2000),
+                CheckoutInfo(label: "Delivery Cost", amount: deliveryCost),
               ],
             ),
             SizedBox(height: 16),

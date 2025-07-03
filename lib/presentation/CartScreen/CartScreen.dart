@@ -14,10 +14,7 @@ class CartScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CartPageAppBar(),
-      body: MultiProvider(providers: [
-        ChangeNotifierProvider(create: (context) => CartScreenModel())
-      ], child:
-          Consumer<CartScreenModel>(builder: (context, model, child){
+      body: Consumer<CartScreenModel>(builder: (context, model, child){
             return Column(
               children: [
                 CheckOutCard(items: model.cartItems),
@@ -33,7 +30,6 @@ class CartScreen extends StatelessWidget{
               ],
             );
           })
-      ),
     );
   }
 

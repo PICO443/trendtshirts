@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../Domain/Item.dart';
+import '../../ItemDetailsScreen/ItemDetailsScreen.dart';
 
 class ItemCard extends StatelessWidget {
   final Item item;
@@ -11,19 +12,24 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    return Card(
-      color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          spacing: 16,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CardMedia(photoUrl: (item.photoUrl.isEmpty)? "assets/images/placeholder.png": item.photoUrl),
-            CardContent(theme: theme, item: item, onAddToCartClick: onAddToCartClick,),
-          ],
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetailsScreen(item: item, onAddToCartClick: (Item ) { onAddToCartClick(item); },)));
+      },
+      child: Card(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            spacing: 16,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CardMedia(photoUrl: (item.photoUrl.isEmpty)? "assets/images/placeholder.png": item.photoUrl),
+              CardContent(theme: theme, item: item, onAddToCartClick: onAddToCartClick,),
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }
@@ -80,7 +86,7 @@ class CardActions extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       spacing: 16,
       children: [
-        Text("${item.price}", style: theme.typography.englishLike.titleMedium?.copyWith(color: Colors.black)),
+        Text("\$${item.price}", style: theme.typography.englishLike.titleMedium?.copyWith(color: Colors.black)),
         FilledButton.tonal(
           style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all(Color(0xFFF1C0E8)),
