@@ -120,7 +120,7 @@ class CardMedia extends StatelessWidget {
     return SizedBox(
       height: 150,
       width: 150,
-      child: Image.asset(photoUrl, fit: BoxFit.cover),
+      child: Image.asset("assets/images/placeholder.png", fit: BoxFit.cover),
     );
   }
 }

@@ -7,6 +7,7 @@ import 'package:trendtshirts/presentation/LoginScreen/LoginScreen.dart';
 
 import 'firebase_options.dart';
 
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
